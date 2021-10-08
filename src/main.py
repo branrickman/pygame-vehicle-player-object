@@ -12,13 +12,16 @@ pygame.display.set_caption("project-rc")
 clock = pygame.time.Clock()
 FPS = 30
 
+# Colors as always via https://coolors.co
+GREEN = '#0FA98F'  # "zomp" green
+
 
 def blitRotate(image, pos, originPos, angle):
     # offset from pivot to center
     image_rect = image.get_rect(topleft=(pos[0] - originPos[0], pos[1] - originPos[1]))
     offset_center_to_pivot = pygame.math.Vector2(pos) - image_rect.center
 
-    # roatated offset from pivot to center
+    # rotated offset from pivot to center
     rotated_offset = offset_center_to_pivot.rotate(-angle)
 
     # rotated image center
@@ -149,7 +152,7 @@ while run:
             if event.key == pygame.K_s:
                 player.braking = False
 
-    window.fill((0, 255, 20))
+    window.fill(GREEN)
     pygame.draw.line(window, [0, 0, 0], player.rect.center, (player.rect.centerx + player.dir[0],  player.rect.centery + player.dir[1]))
 
     player.update()
