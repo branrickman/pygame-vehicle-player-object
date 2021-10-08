@@ -10,4 +10,4 @@ This class provides a pygame object that handles somewhat realistically.
 
 ## Demo:
 
-![](../../../Videos/github_project_demos/pygame-vehicle-class/vehicle-demo.gif)
+![](assets/demo/demo.gif)
