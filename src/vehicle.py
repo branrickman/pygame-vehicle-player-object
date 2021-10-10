@@ -23,14 +23,14 @@ def alt_rotate(image, pos, origin_pos, angle):
 
 
 class Vehicle(pygame.sprite.Sprite):
-    def __init__(self, position, mass, car_type, window):
+    def __init__(self, position, car_type, window):
         pygame.sprite.Sprite.__init__(self)
 
         # image and rendering
         self.window = window
         self.position = position
         self.original_size = 950
-        self.scale = 0.1  # TODO: Fix scaling of turning to be more fun
+        self.scale = 0.05  # TODO: Fix scaling of turning to be more fun
         self.image_clean = pygame.image.load(f'assets/image/car_{car_type}.png').convert_alpha()
         self.aspect_ratio = self.image_clean.get_width() / self.image_clean.get_height()
         self.image_clean = pygame.transform.scale(self.image_clean,
@@ -39,23 +39,25 @@ class Vehicle(pygame.sprite.Sprite):
         self.clean_rect = self.image_clean.get_rect(center=self.position)
         self.image = self.image_clean
         self.rect = self.image.get_rect(center=self.position)
-        self.mass = mass  # TODO implement physical modelling of behavior
         self.angle = 0
 
-        self.front_vec_length = 75
+        self.front_vec_length = 50
         self.tire_direction = None  # TODO change turning to match tire direction, turning radius, tire animation
         self.vel = 0
         self.x_vel = 0
         self.y_vel = 0
-        self.max_vel = 75 * self.scale
+
+        # Tune these parameters for feel
+        self.max_vel = 69
         self.max_reverse_vel = -self.max_vel / 3
-        self.acceleration = 3 * self.scale  # in pixels per frame per frame
-        self.braking_level = 2 * self.scale
-        self.friction_coeff = 1.5 * self.scale
+        self.acceleration = 3  # in pixels per frame per frame
+        self.braking_level = 2
+        self.friction_coeff = 1.5
+        self.turn_rate = 0.7
+
         self.accelerating = False
         self.braking = False
         self.emergency_braking = False
-        self.turn_rate = 3
         self.turning_left = False
         self.turning_right = False
 

@@ -20,7 +20,7 @@ FPS = 30
 # Colors as always via https://coolors.co
 GREEN = '#0FA98F'  # "Zomp" green
 
-player = Vehicle([100, 100], 10, "purple", window)
+player = Vehicle([100, 100], "purple", window)
 run = True
 while run:
     clock.tick(FPS)
