@@ -1,5 +1,5 @@
 
-##Vehicle Player Object:
+## Vehicle Player Object:
 This class provides a pygame object that handles somewhat realistically.
 
 ### Included features
@@ -11,3 +11,5 @@ This class provides a pygame object that handles somewhat realistically.
 ## Demo:
 
 ![](assets/demo/demo.gif)
+
+Credit to looneybits for the public domain car asset: https://opengameart.org/content/2d-race-cars
