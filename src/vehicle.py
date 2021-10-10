@@ -29,8 +29,8 @@ class Vehicle(pygame.sprite.Sprite):
         # image and rendering
         self.window = window
         self.position = position
-        self.original_size = 150
-        self.scale = 0.5
+        self.original_size = 950
+        self.scale = 0.1  # TODO: Fix scaling of turning to be more fun
         self.image_clean = pygame.image.load(f'assets/image/car_{car_type}.png').convert_alpha()
         self.aspect_ratio = self.image_clean.get_width() / self.image_clean.get_height()
         self.image_clean = pygame.transform.scale(self.image_clean,
@@ -54,6 +54,7 @@ class Vehicle(pygame.sprite.Sprite):
         self.friction_coeff = 1.5 * self.scale
         self.accelerating = False
         self.braking = False
+        self.emergency_braking = False
         self.turn_rate = 3
         self.turning_left = False
         self.turning_right = False

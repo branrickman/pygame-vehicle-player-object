@@ -2,24 +2,29 @@
 import pygame
 from vehicle import Vehicle
 
+# TODO: traction
+# TODO: skidding
+# TODO: sound
+# TODO: update braking-- space to emergency brake, s/down to reverse
+
+
 pygame.init()
 
-SCREEN_HEIGHT = 900
-SCREEN_WIDTH = 1500
+SCREEN_HEIGHT = 1000
+SCREEN_WIDTH = 1920
 window = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("project-rc")
 
 clock = pygame.time.Clock()
 FPS = 30
-
 # Colors as always via https://coolors.co
 GREEN = '#0FA98F'  # "Zomp" green
-
 
 player = Vehicle([100, 100], 10, "purple", window)
 run = True
 while run:
     clock.tick(FPS)
+    window.fill(GREEN)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -33,6 +38,8 @@ while run:
                 player.accelerating = True
             if event.key == pygame.K_s or event.key == pygame.K_DOWN:
                 player.braking = True
+            if event.key == pygame.K_SPACE:
+                player.emergency_braking = True
             if event.key == pygame.K_ESCAPE:
                 run = False
         if event.type == pygame.KEYUP:
@@ -45,7 +52,6 @@ while run:
             if event.key == pygame.K_s or event.key == pygame.K_DOWN:
                 player.braking = False
 
-    window.fill(GREEN)
     player.update()
 
     # DEBUG
